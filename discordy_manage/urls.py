@@ -19,5 +19,6 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
+    path('', index),
+    path('submit/', submit)
 ]
