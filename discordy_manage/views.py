@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 
 def index(request):
-    return HttpResponse('hello')
+    return render(request, 'login.html')
 
 def submit(request):
     print(request.headers)
