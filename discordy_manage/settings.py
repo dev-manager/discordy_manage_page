@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-()))p2g@$e-i@i@-tkdu^nzpc@&8@3x56-sggwq1k)p&y8_p7u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-3-34-126-107.ap-northeast-2.compute.amazonaws.com', '3.34.126.107', ]
+ALLOWED_HOSTS = ['ec2-3-34-126-107.ap-northeast-2.compute.amazonaws.com', '3.34.126.107', '127.0.0.1', ]
 
 
 # Application definition
@@ -117,8 +117,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# 홈페이지에서 위 경로로 static file들에 접근할 수 있다.
+STATIC_URL = '/templates/'
 
-STATIC_URL = '/static/'
+# 원본 폴더의 위치.
+STATICFILES_DIRS = [
+    BASE_DIR / "templates",
+    # 여러 폴더를 입력할 수 있음.
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
