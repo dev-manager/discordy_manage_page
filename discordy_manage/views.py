@@ -1,17 +1,20 @@
-from django.shortcuts import HttpResponse, render
-from django.contrib import auth
-from django.contrib.auth.models import User
-
+from django.shortcuts import HttpResponse, render, HttpResponseRedirect
+from module import *
 
 def login(request):
+    auth_ = auth()
     if request.method == 'POST':
         userid = request.POST['username']
         pwd = request.POST['password']
-        user = auth.authenticate(request, username=userid, password=pwd)
-        if user is not None:
-            auth.login(request, user)
-            return
-        return render(request, 'login.html')
+        hash_pwd = auth_.password(pwd)
+        login = auth_.authenticate(userid, hash_pwd)
+        if login:
+            auth_.logined[userid] = True
+        elif login != False:
+            auth_.logined = False
+        if not auth_.logined.get(userid):
+            return render(request, 'login.html')
+        return render(request, 'index.html')
     elif request.method == 'GET':
         return render(request, 'login.html')
 

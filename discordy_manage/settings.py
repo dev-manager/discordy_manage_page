@@ -126,6 +126,8 @@ STATICFILES_DIRS = [
     # 여러 폴더를 입력할 수 있음.
 ]
 
+AUTH_USER_MODEL = 'users.USER'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
